@@ -1,0 +1,52 @@
+/* Design tokens for Daily Habit Log.
+   Light values on bare :root; dark under prefers-color-scheme: dark and :root[data-theme="dark"].
+   Fonts: Inter / Space Grotesk could not be obtained as subset Latin woff2 without third-party
+   network requests, so the system font stack is used instead (see NOTES.md). */
+:root {
+  --bg: #F2F4F8;
+  --surface: #FFFFFF;
+  --surface-2: #E8ECF3;
+  --line: #D3DAE6;
+  --ink: #141C2B;
+  --muted: #586579;
+  --accent: #F0A030;
+  --on-accent: #2B1A00;
+  --accent-text: #9A5A00;
+  --focus: #2457C5;
+  --danger: #B3261E;
+  --font-display: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0D131C;
+    --surface: #151D29;
+    --surface-2: #1F2A39;
+    --line: #2B384A;
+    --ink: #E7ECF4;
+    --muted: #93A1B5;
+    --accent: #F4B04E;
+    --on-accent: #2B1A00;
+    --accent-text: #F4B04E;
+    --focus: #8FB2FF;
+    --danger: #FF9A8F;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0D131C;
+  --surface: #151D29;
+  --surface-2: #1F2A39;
+  --line: #2B384A;
+  --ink: #E7ECF4;
+  --muted: #93A1B5;
+  --accent: #F4B04E;
+  --on-accent: #2B1A00;
+  --accent-text: #F4B04E;
+  --focus: #8FB2FF;
+  --danger: #FF9A8F;
+  color-scheme: dark;
+}

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Daily Habit Log</title>
+
+  <link rel="manifest" href="./manifest.webmanifest">
+  <meta name="theme-color" content="#F2F4F8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0D131C" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Habit Log">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png">
+
+  <link rel="icon" type="image/svg+xml" href="./icons/icon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png">
+
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'">
+
+  <link rel="stylesheet" href="./css/tokens.css">
+  <link rel="stylesheet" href="./css/app.css">
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <p class="eyebrow">Today</p>
+      <h1 id="dateLabel">Daily Habit Log</h1>
+      <div class="bar" aria-hidden="true"><span id="barFill"></span></div>
+      <p class="progress-text" id="progressText" role="status"></p>
+    </header>
+
+    <section class="habits" id="habits" aria-label="Habits"></section>
+
+    <section class="history" id="historySection" aria-label="History">
+      <h2 class="sec">Last 12 weeks</h2>
+      <p class="note">Each column is a week, Monday at the top. The right-hand column is this week.</p>
+      <div class="card" id="history"></div>
+    </section>
+
+    <div class="tools">
+      <button type="button" id="editBtn" aria-pressed="false">Edit habits</button>
+      <button type="button" id="installBtn" hidden>Install app</button>
+    </div>
+    <form class="add" id="addForm" hidden>
+      <label class="sr" for="newHabit">New habit name</label>
+      <input id="newHabit" type="text" maxlength="40" placeholder="e.g. Read for 20 minutes" autocomplete="off">
+      <button type="submit">Add</button>
+    </form>
+
+    <section class="backup" id="backupSection" aria-label="Backup and restore">
+      <button type="button" id="exportBtn">Export backup</button>
+      <button type="button" id="importBtn">Import backup</button>
+      <button type="button" id="importPasteToggle">Paste backup</button>
+      <input type="file" id="importFile" accept=".json" hidden>
+      <div id="importReview" hidden>
+        <p id="importSummary"></p>
+        <button type="button" id="importReplace">Replace everything</button>
+        <button type="button" id="importMerge">Merge</button>
+        <button type="button" id="importCancel">Cancel</button>
+      </div>
+      <div id="importPaste">
+        <label class="sr" for="importPasteText">Paste backup JSON</label>
+        <textarea id="importPasteText"></textarea>
+        <button type="button" id="importPasteBtn">Import pasted</button>
+        <button type="button" id="importPasteCancel">Cancel</button>
+      </div>
+      <button type="button" id="undoImportBtn" hidden>Undo import</button>
+    </section>
+
+    <div id="exportCopy" hidden>
+      <textarea id="exportCopyText" readonly></textarea>
+      <button type="button" id="exportCopyBtn">Copy</button>
+      <button type="button" id="exportCopyClose">Close</button>
+    </div>
+
+    <div id="storageBanner" role="alert" hidden>Storage is unavailable. Changes will be lost when you close the app.</div>
+
+    <div id="backupReminder" hidden role="status">
+      <p>Back up your data</p>
+      <button type="button" id="dismissReminder">Dismiss</button>
+    </div>
+
+    <div id="installHint" hidden>
+      <p>To install: tap Share, then Add to Home Screen</p>
+      <button type="button" id="dismissInstallHint">Dismiss</button>
+    </div>
+    <div id="updateToast" hidden>
+      <p>Update ready. Reload</p>
+      <button type="button" id="updateReloadBtn">Reload</button>
+    </div>
+
+    <p class="status" id="status" role="status">Checking for saved data</p>
+  </main>
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
